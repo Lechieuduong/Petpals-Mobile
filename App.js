@@ -1,20 +1,90 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+const Stack = createNativeStackNavigator();
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import StartScreen from "./screens/StartScreen";
+import LoginScreen from "./screens/LoginScreen";
 
-export default function App() {
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import RegisterScreen from "./screens/RegisterScreen";
+import ForgotPassScreen from "./screens/ForgotPassScreen";
+import BookingStep1Screen from "./screens/BookingStep1Screen";
+import BookingStep2Screen from "./screens/BookingStep2Screen";
+import BookingStep3Screen from "./screens/BookingStep3Screen";
+import BookingStep4Screen from "./screens/BookingStep4Screen";
+import BookingListScreen from "./screens/BookingListScreen";
+
+const App = () => {
+  const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
+
+  const [fontsLoaded, error] = useFonts({
+    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"),
+    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"),
+  });
+
+  if (!fontsLoaded && !error) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <NavigationContainer>
+        {hideSplashScreen ? (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen
+              name="StartScreen"
+              component={StartScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="LoginScreen"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="RegisterScreen"
+              component={RegisterScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ForgotPassScreen"
+              component={ForgotPassScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingStep1Screen"
+              component={BookingStep1Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingStep2Screen"
+              component={BookingStep2Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingStep3Screen"
+              component={BookingStep3Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingStep4Screen"
+              component={BookingStep4Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingListScreen"
+              component={BookingListScreen}
+              options={{ headerShown: false }}
+            />
+            {/* <Stack.Screen
+              name="HomepageScreen"
+              component={HomePageScreen}
+              options={{ headerShown: false }}
+            /> */}
+          </Stack.Navigator>
+        ) : null}
+      </NavigationContainer>
+    </>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+};
+export default App;
