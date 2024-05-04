@@ -6,7 +6,7 @@ import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 const StartScreen = (props) => {
 
   const onPress = () => {
-    props.navigation.navigate('HomePageScreen');
+    props.navigation.navigate('LoginScreen');
   };
 
   return (

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
         height: 60,
         width: 300,
         borderRadius: Border.br_11xl_5,
-        backgroundColor: Color.colorLightpink,
+        backgroundColor: Color.colorBrown,
     },
     btnLogin: {
         fontFamily: FontFamily.robotoBold,

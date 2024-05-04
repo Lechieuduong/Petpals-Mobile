@@ -11,199 +11,288 @@ import { Image } from "expo-image";
 import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
 import { useNavigation } from "@react-navigation/native";
 
-const ProfileScreen = (props) => {
+const PetListScreen = (props) => {
   const [selected, setSelected] = useState("");
   const [isActive, setIsActive] = useState(false);
+  const [isActive2, setIsActive2] = useState(false);
+  const [isActive3, setIsActive3] = useState(false);
+
 
   const onPress = () => {
-    props.navigation.navigate("PetListScreen");
+    props.navigation.navigate("ProfileScreen");
   };
 
   const onPress1 = () => {
-    props.navigation.navigate("LoginScreen");
-  };
-
-  const onPress2 = () => {
-    props.navigation.navigate("ChatScreen");
-  };
-
-  const onPress3 = () => {
     props.navigation.navigate("HomePageScreen");
   };
 
-  const onPress4 = () => {
-    props.navigation.navigate('BookingListScreen');
+  const handlePress = () => {
+    // if (isActive) {
+    //   navigation.navigate("BookingStep2Screen");
+    // } else {
+    setIsActive((current) => !current);
+    // }
   };
-  
-  const onPress5 = () => {
-    props.navigation.navigate('ProfileDetailScreen');
+
+  const handlePress1 = () => {
+    // if (isActive) {
+    //   navigation.navigate("BookingStep2Screen");
+    // } else {
+      setIsActive2((current1) => !current1);
+    // }
+  };
+
+  const handlePress2 = () => {
+    // if (isActive) {
+    //   navigation.navigate("BookingStep2Screen");
+    // } else {
+      setIsActive3((current2) => !current2);
+    // }
   };
 
   return (
     <View style={styles.bookingstep1screen}>
       <View style={styles.header}>
-        <Text style={styles.selectHeader}>Thông tin khách hàng</Text>
+        <Text style={styles.selectHeader}>Thông tin thú cưng</Text>
+        <TouchableOpacity onPress={onPress}>
+          <Image
+            style={styles.cancelIcon}
+            contentFit="cover"
+            source={require("../assets/vector54.png")}
+          />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Text style={styles.supportText}>Hỗ trợ</Text>
+        </TouchableOpacity>
+        <Image
+          style={styles.supportIcon}
+          contentFit="cover"
+          source={require("../assets/vector55.png")}
+        />
       </View>
 
-      <View style={{ height: 650, width: "100%" }}>
-        <ScrollView contentContainerStyle={{ height: 1150 }} scrollEnabled={false}>
-            <View style={{ height: 100, width: 330, backgroundColor: "white", alignSelf: "center", top: 120, borderRadius: 10}}>
-                <Image
-                    style={{ height: 70, width: 70, top: -35, alignSelf: "center" }}
-                    contentFit="contain"
-                    source={require("../assets/image-552.png")}
-                />
-                <Text style={{textAlign: "center", top: -30, fontSize: 20}}>Dương Lê</Text>
-                <Text style={{textAlign: "center", top: -25}}>0918792787</Text>
-            </View>
-
-            <View style={{ height: 160, width: 330, backgroundColor: "white", alignSelf: "center", top: 140, borderRadius: 10}}>
-                <TouchableOpacity onPress={onPress5}>
-                <Image
-                        style={{ width: 18, height: 18, left: 15, top: 20}}
-                        contentFit="contain"
-                        source={require("../assets/vector102.png")}
-                    />
-                    <Text style={{ left: 50, top: 2} }>Hồ sơ khách hàng</Text>
-                </TouchableOpacity>
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector103.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Danh sách quan tâm</Text>
-
-                <TouchableOpacity onPress={onPress}>
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/pet.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Danh sách thú cưng</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity onPress={onPress4}>
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector105.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Danh sách lịch khám</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={{ height: 230, width: 330, backgroundColor: "white", alignSelf: "center", top: 160, borderRadius: 10}}>
+      <View style={{ height: 800, width: "100%" }}>
+        <ScrollView contentContainerStyle={{ height: 850 }}>
+          <View>
             <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector96.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Điều khoản và Quy định</Text>
+              style={{ width: 15, height: 15, top: 100, left: 20 }}
+              contentFit="cover"
+              source={require("../assets/pet.png")}
+            />
+            <Text
+              style={{
+                fontSize: 15,
+                left: 20,
+                color: Color.colorBrown,
+                top: 83,
+                left: 50,
+              }}
+            >
+              Danh sách thú cưng
+            </Text>
+          </View>
+          <TouchableOpacity
+            onPress={handlePress}
+            style={{
+              width: 330,
+              height: 100,
+              alignSelf: "center",
+              top: 100,
+              backgroundColor: "white",
+              borderRadius: 15,
+            }}
+          >
+            <Image
+              style={{ width: 70, height: 70, top: 15, left: 20 } }
+              contentFit="cover"
+              source={require("../assets/pin1.png")}
+            />
+            <Text
+              style={{
+                top: -30,
+                left: 150,
+                fontFamily: FontFamily.robotoBold,
+                fontSize: 15,
+              }}
+            >
+              Trần
+            </Text>
+            {isActive && (
+              <View style={styles.selectedTextContainer}>
+                <Text style={styles.selectedText}>ĐANG CHỌN</Text>
+              </View>
+          )}
+          </TouchableOpacity>
+          
 
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector97.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Tham gia cộng đồng</Text>
+          <TouchableOpacity
+          onPress={handlePress1}
+            style={{
+              alignSelf: "center",
+              width: 330,
+              height: 100,
+              top: 110,
+              backgroundColor: "white",
+              borderRadius: 15,
+            }}
+          >
+            <Image
+              style={{ width: 70, height: 70, top: 15, left: 20 }}
+              contentFit="cover"
+              source={require("../assets/pin2.png")}
+            />
+            <Text
+              style={{
+                top: -30,
+                left: 150,
+                fontFamily: FontFamily.robotoBold,
+                fontSize: 15,
+              }}
+            >
+              Khánh
+            </Text>
+            {isActive2 && (
+              <View style={styles.selectedTextContainer}>
+                <Text style={styles.selectedText}>ĐANG CHỌN</Text>
+              </View>
+          )}
+          </TouchableOpacity>
 
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector98.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Chia sẻ ứng dụng</Text>
-
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector99.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Liên hệ hỗ trợ</Text>
-
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector100.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Cài đặt</Text>
-
-                <TouchableOpacity onPress={onPress1}>
-                <Image
-                    style={{ width: 18, height: 18, left: 15, top: 20}}
-                    contentFit="contain"
-                    source={require("../assets/vector101.png")}
-                />
-                <Text style={{ left: 50, top: 2} }>Đăng xuất</Text>
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
+          <TouchableOpacity
+          onPress={handlePress2}
+            style={{
+              alignSelf: "center",
+              width: 330,
+              height: 100,
+              backgroundColor: "white",
+              borderRadius: 15,
+              top: 120,
+            }}
+          >
+            <Image
+              style={{ width: 70, height: 70, top: 15, left: 20 }}
+              contentFit="cover"
+              source={require("../assets/pin.png")}
+            />
+            <Text
+              style={{
+                top: -30,
+                left: 150,
+                fontFamily: FontFamily.robotoBold,
+                fontSize: 15,
+              }}
+            >
+              Furry
+            </Text>
+            {isActive3 && (
+              <View style={styles.selectedTextContainer}>
+                <Text style={styles.selectedText}>ĐANG CHỌN</Text>
+              </View>
+          )}
+          </TouchableOpacity>
+          <View
+              style={{
+                width: 330,
+                alignSelf: "center",
+                top: 500,
+                position: "absolute",
+              }}
+            >
+        <Text
+          style={{ top: -20, fontSize: 20, fontFamily: FontFamily.robotoBold,}}
+        >
+          Thêm thú cưng
+        </Text>
+        <TextInput
+          style={{
+            borderRadius: Border.br_base,
+            borderColor: Color.colorGainsboro,
+            borderWidth: 1,
+            borderStyle: "solid",
+            height: 60,
+            position: "absolute",
+            flex: 1,
+            width: "100%",
+            top: 20,
+            left: 0,
+            textAlign: "left",
+            padding: 10,
+            backgroundColor: "white"
+          }}
+          placeholder="Tên thú cưng"
+          secureTextEntry={true}
+        ></TextInput>
+        <TextInput
+          style={{
+            borderRadius: Border.br_base,
+            borderColor: Color.colorGainsboro,
+            borderWidth: 1,
+            borderStyle: "solid",
+            height: 60,
+            position: "absolute",
+            flex: 1,
+            width: "100%",
+            top: 90,
+            left: 0,
+            textAlign: "left",
+            padding: 10,
+            backgroundColor: "white"
+          }}
+          placeholder="Chủng loại"
+          secureTextEntry={true}
+        ></TextInput>
+        <TextInput
+          style={{
+            borderRadius: Border.br_base,
+            borderColor: Color.colorGainsboro,
+            borderWidth: 1,
+            borderStyle: "solid",
+            height: 60,
+            position: "absolute",
+            flex: 1,
+            width: 150,
+            top: 160,
+            left: 0,
+            textAlign: "left",
+            padding: 10,
+            backgroundColor: "white"
+          }}
+          placeholder="Giới tính"
+          secureTextEntry={true}
+        ></TextInput>
+        <TextInput
+          style={{
+            borderRadius: Border.br_base,
+            borderColor: Color.colorGainsboro,
+            borderWidth: 1,
+            borderStyle: "solid",
+            height: 60,
+            position: "absolute",
+            flex: 1,
+            width: 150,
+            top: 160,
+            left: 180,
+            textAlign: "left",
+            padding: 10,
+            backgroundColor: "white"
+          }}
+          placeholder="Tuổi"
+          secureTextEntry={true}
+        ></TextInput>
+        <TouchableOpacity>
+          <View style= {{top: 210, width: "100%", height: 50, borderRadius: 15, backgroundColor: Color.colorBrown}}>
+            <Text style={{ textAlign: "center", color: "white", top: 15, fontSize: 15}}>Thêm thú cưng</Text>
+          </View>
+        </TouchableOpacity>
       </View>
-
-      <View style={{ width: "100%", top: 700, height: 80, backgroundColor: "white", position: "absolute"}}>
-                  <TouchableOpacity onPress={onPress3}>
-                  <View style={{width: "25%", left: 10, top: 10}}>
-                        <Image
-                            style={{ width: 20, height: 20, alignSelf: "center"}}
-                            contentFit="contain"
-                            source={require("../assets/vector48.png")}
-                        />
-                        <Text style={{textAlign: "center" }}>Trang chủ</Text>
-                  </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={onPress4}>
-                  <View style={{width: "25%", top: -27, left: 95}}>
-                        <Image
-                            style={{ width: 20, height: 20, alignSelf: "center"}}
-                            contentFit="contain"
-                            source={require("../assets/vector12.png")}
-                        />
-                        <Text style={{ textAlign: "center" }}>Lịch khám</Text>
-                  </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={onPress2}>
-                  <View style={{width: "25%", top: -64, left: 180}}>
-                        <Image
-                            style={{ width: 20, height: 20, alignSelf: "center"}}
-                            contentFit="contain"
-                            source={require("../assets/vector13.png")}
-                        />
-                        <Text style={{ textAlign: "center" }}>Tin nhắn</Text>
-                  </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                  <View style={{width: "25%", top: -101, left: 260 }}>
-                        <Image
-                            style={{ width: 20, height: 20, alignSelf: "center"}}
-                            contentFit="contain"
-                            source={require("../assets/vector95.png")}
-                        />
-                        <Text style={{ textAlign: "center", color: Color.colorBrown }}>Tài khoản</Text>
-                  </View>
-                  </TouchableOpacity>
-                  
+        </ScrollView>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    notificationContainer: {
-        borderLeftColor: Color.colorBrown,
-        borderStartWidth: 5,
-        width: 330,
-        alignSelf: "center",
-        top: 80,
-        height: 75,
-        backgroundColor: '#FADADD', // Màu hồng nhạt
-        borderRadius: 5, // Viền bo tròn
-        padding: 10, // Đệm xung quanh nội dung
-        margin: 10, // Khoảng cách xung quanh hộp thoại
-      },
-      notificationText: {
-        color: '#000', // Màu chữ đen
-        fontSize: 14, // Cỡ chữ
-        textAlign: 'left', // Căn giữa nội dung
-      },
   emailTextInside: {
     borderRadius: Border.br_base,
     borderColor: Color.colorGainsboro,
@@ -349,9 +438,6 @@ const styles = StyleSheet.create({
   },
   selectedTimeSlot1: {
     backgroundColor: Color.colorBrown,
-  },
-  selectedText: {
-    color: "white",
   },
   labelMorning: {
     left: 10,
@@ -662,11 +748,11 @@ const styles = StyleSheet.create({
   },
 
   supportIcon: {
-    top: 15,
-    width: 18,
-    height: 20,
+    top: -5,
+    width: 20,
+    height: 23,
     verticalAlign: "middle",
-    left: 325,
+    left: 270,
   },
 
   supportText: {
@@ -694,4 +780,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileScreen;
+export default PetListScreen;

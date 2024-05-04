@@ -33,27 +33,46 @@ const HomePageScreen = (props) => {
       const onPress6 = () => {
         props.navigation.navigate('ProfileScreen');
       };
+
+      const onPress7 = () => {
+        props.navigation.navigate('BlogListScreen');
+      };
+
+      const onPress8 = () => {
+        props.navigation.navigate('BlogDetailScreen');
+      };
+
+      const onPress9 = () => {
+        props.navigation.navigate('HospitalListScreen');
+      };
+
+      const onPress10 = () => {
+        props.navigation.navigate('ProfileScreen');
+      };
     return (
             <View style={styles.homepagescreen}>
                 <View style={styles.header}>
                         <View style={styles.headerContent}>
-                            <Text style={styles.headerText}>
+                          <TouchableOpacity onPress={onPress10}>
+                          <Text style={styles.headerText}>
                                 <Text style={{ color: "#fff"}}>{`Buổi tối an lành! `}</Text>
                                 <Text style={{ color: "#fff", fontWeight: "bold"}}>Dương Lê</Text>
                             </Text>
+                          </TouchableOpacity>
                             <Image
                                 style={styles.avatar}
                                 contentFit="cover"
                                 source={require("../assets/image-55.png")}
                             />
+                            
                         </View>
                         <View style={[styles.searchInput]}>
                             <TextInput style={[styles.emailTextInside]} placeholder="Tên bác sĩ, triệu chứng bệnh, chuyên khoa..."></TextInput>
                         </View>
                 </View>
 
-                <View style={{ height: 600, width: "100%" }}>
-                    <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+                <View style={{ height: 800, width: "100%" }}>
+                    <ScrollView contentContainerStyle={{paddingBottom: 80, height: 1800}}>
                         <Image style={{ height: 170, width: 340, alignSelf: "center", top: 10, borderRadius: 15}}
                             contentFit="cover"
                             source={require("../assets/banner.png")}/>
@@ -183,7 +202,7 @@ const HomePageScreen = (props) => {
                             </ScrollView>
                         </View>
                         <View style={{ width: "auto", height: 150, top: 40, backgroundColor: "white" }}>
-                                <TouchableOpacity style={{ width: "100%", height: 30, left: 20, top: 10 }}>
+                                <TouchableOpacity onPress={onPress9} style={{ width: "100%", height: 30, left: 20, top: 10 }}>
                                     <Image
                                         style={{ width: 14.5, height: 15}}
                                         contentFit="cover"
@@ -191,7 +210,7 @@ const HomePageScreen = (props) => {
                                     />
                                     <Text style={{ top: -16, left: 25}}>Bệnh viện</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={{ left: 20, width: 150, top: 20}}>
+                                <TouchableOpacity  style={{ left: 20, width: 150, top: 20}}>
                                     <View style={{ width: 75, height: 75, borderColor: "black", borderWidth: 1, borderRadius: 10}}>
                                         <Image
                                             style={{ width: 55, height: 35, alignSelf: "center", top: 20}}
@@ -205,7 +224,7 @@ const HomePageScreen = (props) => {
                         </View>
 
                         <View style={{ width: "auto", height: 150, top: 50, backgroundColor: "white" }}>
-                                <TouchableOpacity style={{ width: "100%", height: 30, left: 20, top: 10 }}>
+                                <TouchableOpacity onPress={onPress} style={{ width: "100%", height: 30, left: 20, top: 10 }}>
                                     <Image
                                         style={{ width: 17, height: 15}}
                                         contentFit="cover"
@@ -241,8 +260,8 @@ const HomePageScreen = (props) => {
                             </ScrollView>
                         </View>
 
-                        <View style={{ width: "auto", height: 600, top: 60, backgroundColor: "white" }}>
-                                <TouchableOpacity style={{ width: "100%", height: 30, left: 20, top: 10 }}>
+                        <View style={{ width: "auto", height: 650, top: 60, backgroundColor: "white" }}>
+                                <TouchableOpacity onPress={onPress7} style={{ width: "100%", height: 30, left: 20, top: 10 }}>
                                     <Image
                                         style={{ width: 17, height: 15}}
                                         contentFit="cover"
@@ -250,7 +269,7 @@ const HomePageScreen = (props) => {
                                     />
                                     <Text style={{ top: -16, left: 25}}>Tin y tế</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity style={{width: 330, top: 20, alignSelf: "center" }}>
+                                <TouchableOpacity onPress={onPress8} style={{width: 330, top: 20, alignSelf: "center" }}>
                                     <Image
                                         style={{ width: 330, height: 190,  borderRadius:15 }}
                                         contentFit="cover"
@@ -266,21 +285,35 @@ const HomePageScreen = (props) => {
                                 </TouchableOpacity>
                             <ScrollView horizontal style={{ paddingTop: 10, width: "auto"}}>
                                 <TouchableOpacity style={{ left: 10, width: 300, height: 160, borderRadius: 10, borderWidth: 1, alignSelf: "center"}}>
-                                    {/* <Image
-                                        style={{ width: 330, height: 160}}
+                                    <Image
+                                        style={{ width: 100, height: 100, alignSelf: 'flex-end', top: 30, right: 10}}
                                         contentFit="cover"
-                                        source={require("../assets/image-60.png")}
-                                    /> */}
+                                        source={require("../assets/image-27.png")}
+                                    />
+                                    <Text style={{fontSize: 15 ,left: 10, width: 160, top: -60}}>Cách phòng ngừa và điều trị bệnh nấm da ở thú cưng hiệu quả</Text>
+                                    <Image
+                                        style={{ width: 20, height: 20, top: -30, left: 10}}
+                                        contentFit="cover"
+                                        source={require("../assets/bc-s-trung.png")}
+                                    />
+                                    <Text style={{fontSize: 10, top: -46, left: 40}}>TS.BS Nguyễn Xuân Tùng</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={{ left: 20, width: 300, height: 160, borderRadius: 10, borderWidth: 1, alignSelf: "center"}}>
-                                    {/* <Image
-                                        style={{ width: 330, height: 160}}
+                                    <Image
+                                        style={{ width: 100, height: 100, alignSelf: 'flex-end', top: 30, right: 10}}
                                         contentFit="cover"
-                                        source={require("../assets/image-60.png")}
-                                    /> */}
+                                        source={require("../assets/image-27.png")}
+                                    />
+                                    <Text style={{fontSize: 15 ,left: 10, width: 160, top: -60}}>Cách phòng ngừa và điều trị bệnh nấm da ở thú cưng hiệu quả</Text>
+                                    <Image
+                                        style={{ width: 20, height: 20, top: -30, left: 10}}
+                                        contentFit="cover"
+                                        source={require("../assets/bc-s-trung.png")}
+                                    />
+                                    <Text style={{fontSize: 10, top: -46, left: 40}}>TS.BS Nguyễn Xuân Tùng</Text>
                                 </TouchableOpacity>
                             </ScrollView>
-                                <TouchableOpacity style={{ width: 300, height: 50, borderRadius: 30, borderWidth: 1, borderColor: "gray", alignSelf: "center"}}>
+                                <TouchableOpacity onPress={onPress7} style={{ width: 300, height: 50, borderRadius: 30, borderWidth: 1, borderColor: "gray", alignSelf: "center"}}>
                                     <Text style={{ textAlign: "center", top: 15}}>Xem các bài viết khác</Text>
                                 </TouchableOpacity>
                         </View>

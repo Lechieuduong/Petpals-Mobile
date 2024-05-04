@@ -24,6 +24,12 @@ import BookingDetailScreen from "./screens/BookingDetailScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import BookingDetail1Screen from "./screens/BookingDetailScreen1";
 import BookingDetail2Screen from "./screens/BookingDetailScreen2";
+import BlogListScreen from "./screens/BlogListScreen";
+import BlogDetailScreen from "./screens/BlogDetailScreen";
+import HospitalListScreen from "./screens/HospitalListScreen";
+import HospitalDetailSreen from "./screens/HospitalDetailScreen";
+import PetListScreen from "./screens/PetListScreen";
+import ProfileDetailScreen from "./screens/ProfileDetailScreen";
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
@@ -141,7 +147,39 @@ const App = () => {
               component={BookingDetail2Screen}
               options={{ headerShown: false }}
             />
+            <Stack.Screen
+              name="BlogListScreen"
+              component={BlogListScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BlogDetailScreen"
+              component={BlogDetailScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="HospitalListScreen"
+              component={HospitalListScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="HospitalDetailSreen"
+              component={HospitalDetailSreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PetListScreen"
+              component={PetListScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ProfileDetailScreen"
+              component={ProfileDetailScreen}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
+
+          
         ) : null}
       </NavigationContainer>
     </>
