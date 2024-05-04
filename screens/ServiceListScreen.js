@@ -1,566 +1,562 @@
-// import * as React from "react";
-// import { StyleSheet, View, Text } from "react-native";
-// import { Image } from "expo-image";
-// import { Color, FontFamily, FontSize, Border } from "../GlobalStyles";
+import * as React from "react";
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, TextInput } from "react-native";
+import { Image } from "expo-image";
+import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
+const ServiceListScreen = (props) => {
+    const onPress = () => {
+        props.navigation.navigate('HomePageScreen');
+      };
+  return (
+    <View style={styles.calendarlistscreen}>
+      <View style={styles.header}>
+        <Text style={{ color: "white" , textAlign: "center", top: 50, fontSize:  15, fontFamily: FontFamily.robotoBold}}>Danh sách dịch vụ</Text>
+        <Image
+          style={{ height: 15, width: 15, top: 30, alignSelf: "flex-end", right: 20 }}
+          contentFit="cover"
+          source={require("../assets/vector51.png")}
+        />
+        <TouchableOpacity onPress={onPress}>
+            <Image
+            style={{ height: 14, width: 8, top: 17, alignSelf: "flex-start", left: 20 }}
+            contentFit="cover"
+            source={require("../assets/vector19.png")}
+            />
+        </TouchableOpacity>
+        <TextInput style={{ height: 40, width: 300, alignSelf: "center", backgroundColor: "#54090B", top: 30, borderRadius: 20, textAlign: "center", color: "white"}} placeholder="  Tìm theo tên dịch vụ..." placeholderTextColor={"white"}></TextInput>
+        <Image
+            style={{ height: 15, width: 15, top: 2 , left: 40}}
+            contentFit="cover"
+            source={require("../assets/vector50.png")}
+        />
+      </View>
+      <View style={{ height: 750, width: "100%" }}>
+        <ScrollView contentContainerStyle={{paddingBottom: 20}}>
+          <TouchableOpacity style={{ height: 300, backgroundColor: "white", width: 330, alignSelf: "center", top: 10, borderRadius: 15 }}>
+          <Image
+            style={{ height: 185, width: 330, borderRadius: 15}}
+            contentFit="cover"
+            source={require("../assets/rectangle-79.png")}
+            />
+            <View style={{ height: 30, width: 200, backgroundColor: Color.colorBrown, top: -15, borderRadius: 5}}>
+                <Text style={{ color: "white" , textAlign: "center", top: 5}}>Cấp cứu 24/24</Text>
+            </View>
+            <Text style={{ padding: 10, width: 330, fontSize: 15, left: 10}}>Dịch vụ hoạt động 24/24, hãy liên hệ hotline của Petpals để chúng tôi hỗ trợ bạn kịp thời.</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ height: 300, backgroundColor: "white", width: 330, alignSelf: "center", top: 20, borderRadius: 15 }}>
+          <Image
+            style={{ height: 185, width: 330, borderRadius: 15}}
+            contentFit="cover"
+            source={require("../assets/rectangle-791.png")}
+            />
+            <View style={{ height: 30, width: 200, backgroundColor: Color.colorBrown, top: -15, borderRadius: 5}}>
+                <Text style={{ color: "white" , textAlign: "center", top: 5}}>Tiêm phòng Vaccine</Text>
+            </View>
+            <Text style={{ padding: 10, width: 330, fontSize: 15, left: 10}}>Chúng tôi sử dụng vaccine hàng đầu từ Mỹ và Châu Âu. Bạn sẽ luôn an tâm với lựa chọn tiêm chủng tại Petpals</Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
+    </View>
+  );
+};
 
-// const ServiceListScreen = () => {
-//   return (
-//     <View style={styles.servicelistscreen}>
-//       <View style={[styles.headerFixed, styles.searchBarLayout]}>
-//         <View style={[styles.searchBar, styles.searchBarLayout]}>
-//           <View style={[styles.searchBar1, styles.searchPosition]}>
-//             <View style={[styles.searchBarChild, styles.groupInnerBg]} />
-//             <Image
-//               style={[styles.vectorIcon, styles.itemIconLayout]}
-//               contentFit="cover"
-//               source={require("../assets/vector18.png")}
-//             />
-//             <View style={styles.searchBarItem} />
-//             <Text style={[styles.tnBcS, styles.bLcTypo]}>
-//               Tên dịch vụ, mô tả,...
-//             </Text>
-//           </View>
-//           <Image
-//             style={[styles.vectorIcon1, styles.itemIconLayout]}
-//             contentFit="cover"
-//             source={require("../assets/vector19.png")}
-//           />
-//         </View>
-//       </View>
-//       <View style={[styles.dchVContent, styles.barPosition]}>
-//         <View style={[styles.serviceItem, styles.serviceItemShadowBox]}>
-//           <View
-//             style={[styles.rectangleParent, styles.rectangleParentPosition]}
-//           >
-//             <View style={[styles.groupChild, styles.groupChildPosition]} />
-//             <Image
-//               style={[styles.groupItem, styles.groupItemPosition]}
-//               contentFit="cover"
-//               source={require("../assets/rectangle-79.png")}
-//             />
-//           </View>
-//           <Text style={[styles.dchVHot, styles.dchVHotTypo]}>
-//             Dịch vụ hoạt động 24/24, hãy liên hệ hotline của Petpals để chúng
-//             tôi hỗ trợ bạn kịp thời.
-//           </Text>
-//           <View style={[styles.rectangleGroup, styles.searchPosition]}>
-//             <View style={[styles.groupInner, styles.groupItemPosition]} />
-//             <Text style={[styles.cpCu2424, styles.timeTypo]}>
-//               Cấp cứu 24/24
-//             </Text>
-//           </View>
-//         </View>
-//         <View style={[styles.serviceItem1, styles.serviceItemShadowBox]}>
-//           <View
-//             style={[styles.rectangleParent, styles.rectangleParentPosition]}
-//           >
-//             <View style={[styles.groupChild, styles.groupChildPosition]} />
-//             <Image
-//               style={[styles.groupItem, styles.groupItemPosition]}
-//               contentFit="cover"
-//               source={require("../assets/rectangle-791.png")}
-//             />
-//           </View>
-//           <Text style={[styles.dchVHot, styles.dchVHotTypo]}>
-//             Chúng tôi sử dụng vaccine hàng đầu từ Mỹ và Châu Âu. Bạn sẽ luôn an
-//             tâm với lựa chọn tiêm chủng tại Petpals
-//           </Text>
-//           <View style={[styles.rectangleGroup, styles.searchPosition]}>
-//             <View style={[styles.groupInner, styles.groupItemPosition]} />
-//             <Text style={[styles.timPhngVaccine, styles.khmVIuTypo]}>
-//               Tiêm phòng vaccine
-//             </Text>
-//           </View>
-//         </View>
-//         <View style={[styles.serviceItem2, styles.serviceItemShadowBox]}>
-//           <View
-//             style={[styles.serviceItemInner, styles.rectangleParentPosition]}
-//           >
-//             <View style={[styles.groupChild2, styles.groupChildPosition]} />
-//           </View>
-//           <Image
-//             style={[styles.serviceItemChild, styles.groupItemPosition]}
-//             contentFit="cover"
-//             source={require("../assets/rectangle-82.png")}
-//           />
-//           <Text style={styles.dchVHotTypo}>
-//             Thực hiện tiếp nhận, sàng lọc, khám chuyên khoa, xét nghiệm, chuẩn
-//             đoán và điều trị bệnh cho thú cưng.
-//           </Text>
-//           <View style={[styles.rectangleGroup, styles.searchPosition]}>
-//             <View style={[styles.groupInner, styles.groupItemPosition]} />
-//             <Text style={[styles.khmVIu, styles.khmVIuTypo]}>
-//               Khám và điều trị
-//             </Text>
-//           </View>
-//         </View>
-//       </View>
-//       <View style={[styles.topBarStatus, styles.barPosition]}>
-//         <View style={[styles.searchBar1, styles.searchPosition]}>
-//           <View style={[styles.searchBarChild, styles.groupInnerBg]}>
-//             <View style={styles.action}>
-//               <Text style={[styles.time, styles.timePosition]}>9:41</Text>
-//             </View>
-//             <View style={[styles.container, styles.timePosition]}>
-//               <Image
-//                 style={[styles.batteryIcon, styles.timePosition]}
-//                 contentFit="cover"
-//                 source={require("../assets/battery1.png")}
-//               />
-//               <Image
-//                 style={styles.combinedShapeIcon}
-//                 contentFit="cover"
-//                 source={require("../assets/combined-shape1.png")}
-//               />
-//               <Image
-//                 style={styles.wiFiIcon}
-//                 contentFit="cover"
-//                 source={require("../assets/wifi1.png")}
-//               />
-//             </View>
-//           </View>
-//         </View>
-//       </View>
-//       <View style={[styles.filterBar, styles.barPosition]}>
-//         <View style={[styles.filterBarChild, styles.groupChildPosition]} />
-//         <View style={[styles.filter1, styles.filterPosition]}>
-//           <View style={[styles.filter1Child, styles.childBorder]} />
-//           <Text style={[styles.ttC, styles.ttCTypo]}>Tất cả</Text>
-//           <Image
-//             style={[styles.vectorIcon2, styles.itemIconLayout]}
-//             contentFit="cover"
-//             source={require("../assets/vector15.png")}
-//           />
-//         </View>
-//         <View style={[styles.filter2, styles.filterPosition]}>
-//           <View style={[styles.filter2Child, styles.childBorder]} />
-//           <Text style={[styles.dchV, styles.ttCTypo]}>Dịch vụ</Text>
-//           <Image
-//             style={[styles.vectorIcon3, styles.itemIconLayout]}
-//             contentFit="cover"
-//             source={require("../assets/vector16.png")}
-//           />
-//         </View>
-//         <View style={styles.filter3}>
-//           <Image
-//             style={[styles.vectorIcon4, styles.itemIconLayout]}
-//             contentFit="cover"
-//             source={require("../assets/vector17.png")}
-//           />
-//           <Text style={[styles.bLc, styles.bLcTypo]}>Bộ lọc</Text>
-//         </View>
-//       </View>
-//     </View>
-//   );
-// };
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: Color.colorBrown,
+    height: 130,
+    width: "100%"
+  },
+  footerPosition: {
+    width: 374,
+    top: 690,
+    height: 69,
+    left: 0,
+    position: "absolute",
+  },
+  vectorIconLayout: {
+    maxHeight: "100%",
+    maxWidth: "100%",
+    overflow: "hidden",
+    position: "absolute",
+  },
+  stt1FlexBox: {
+    justifyContent: "center",
+    textAlign: "center",
+  },
+  tinNhnTypo: {
+    top: "56.52%",
+    fontFamily: FontFamily.interRegular,
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    textAlign: "center",
+    color: Color.colorBlack,
+    letterSpacing: 0,
+    fontSize: FontSize.size_2xs,
+    width: "15.24%",
+    height: "24.64%",
+    position: "absolute",
+  },
+  footerItemPosition: {
+    backgroundColor: Color.foundationBrownBrown500,
+    top: "0%",
+    position: "absolute",
+  },
+  searchPosition: {
+    width: 375,
+    left: 0,
+    position: "absolute",
+  },
+  tmTheoMPosition: {
+    top: "17.54%",
+    height: "64.91%",
+    position: "absolute",
+  },
+  timeTypo: {
+    fontSize: FontSize.size_mini,
+    letterSpacing: 0,
+  },
+  vectorIconPosition: {
+    bottom: "26.67%",
+    maxHeight: "100%",
+    overflow: "hidden",
+    maxWidth: "100%",
+    position: "absolute",
+  },
+  barPosition: {
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    height: "100%",
+    width: "100%",
+  },
+  timePosition: {
+    top: "50%",
+    position: "absolute",
+  },
+  rectangleParentLayout: {
+    height: 196,
+    width: 347,
+    left: 13,
+    position: "absolute",
+  },
+  childPosition: {
+    backgroundColor: Color.greyscaleBlackWhite,
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    top: "0%",
+    height: "100%",
+    position: "absolute",
+    width: "100%",
+  },
+  groupPosition: {
+    borderRadius: Border.br_11xl,
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    top: "0%",
+    height: "100%",
+    position: "absolute",
+    width: "100%",
+  },
+  hyTypo: {
+    fontSize: FontSize.size_smi,
+    left: "19.1%",
+    width: "70.79%",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    textAlign: "center",
+    fontFamily: FontFamily.robotoRegular,
+    letterSpacing: 0,
+    position: "absolute",
+  },
+  khmLayout1: {
+    height: "6.63%",
+    fontSize: FontSize.size_mini,
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    letterSpacing: 0,
+    position: "absolute",
+  },
+  khmLayout: {
+    width: "39.48%",
+    left: "4.61%",
+    textAlign: "left",
+  },
+  textTypo: {
+    left: "44.96%",
+    width: "50.14%",
+    textAlign: "right",
+    height: "6.63%",
+    fontSize: FontSize.size_mini,
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    fontFamily: FontFamily.robotoRegular,
+    letterSpacing: 0,
+    position: "absolute",
+  },
+  dngLPosition: {
+    top: "83.16%",
+    height: "6.63%",
+    fontSize: FontSize.size_mini,
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    fontFamily: FontFamily.robotoRegular,
+    letterSpacing: 0,
+    position: "absolute",
+  },
+  vectorIcon: {
+    right: "84.76%",
+    left: "9.63%",
+    bottom: "49.28%",
+    top: "20.29%",
+    width: "5.61%",
+    height: "30.43%",
+    maxHeight: "100%",
+    maxWidth: "100%",
+  },
+  trangCh: {
+    left: "5.08%",
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    fontSize: FontSize.size_2xs,
+    top: "55.07%",
+    width: "15.24%",
+    height: "24.64%",
+    justifyContent: "center",
+    fontFamily: FontFamily.robotoRegular,
+    letterSpacing: 0,
+    position: "absolute",
+  },
+  lchKhm: {
+    left: "30.21%",
+    color: Color.foundationBrownBrown500,
+    fontFamily: FontFamily.interRegular,
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    textAlign: "center",
+    letterSpacing: 0,
+    fontSize: FontSize.size_2xs,
+    top: "55.07%",
+    width: "15.24%",
+    height: "24.64%",
+    position: "absolute",
+  },
+  tinNhn: {
+    left: "55.35%",
+  },
+  tiKhon: {
+    left: "80.21%",
+  },
+  vectorIcon1: {
+    right: "59.36%",
+    left: "35.03%",
+    bottom: "49.28%",
+    top: "20.29%",
+    width: "5.61%",
+    height: "30.43%",
+    maxHeight: "100%",
+    maxWidth: "100%",
+  },
+  vectorIcon2: {
+    right: "34.22%",
+    left: "60.16%",
+    bottom: "49.28%",
+    top: "20.29%",
+    width: "5.61%",
+    height: "30.43%",
+    maxHeight: "100%",
+    maxWidth: "100%",
+  },
+  vectorIcon3: {
+    height: "31.45%",
+    width: "5.8%",
+    top: "18.84%",
+    right: "9.39%",
+    bottom: "49.71%",
+    left: "84.81%",
+  },
+  footerItem: {
+    height: "4.35%",
+    width: "25.08%",
+    right: "49.52%",
+    bottom: "95.65%",
+    left: "25.4%",
+    borderBottomRightRadius: Border.br_8xs,
+    borderBottomLeftRadius: Border.br_8xs,
+  },
+  footer: {
+    top: 690,
+    height: 69,
+  },
+  searchBarChild: {
+    left: "0%",
+    bottom: "0%",
+    right: "0%",
+    height: "100%",
+    width: "100%",
+    backgroundColor: Color.foundationBrownBrown500,
+  },
+  searchBarItem: {
+    width: "90.67%",
+    right: "4.53%",
+    bottom: "17.54%",
+    left: "4.8%",
+    borderRadius: Border.br_24xl,
+    backgroundColor: Color.colorMaroon_200,
+  },
+  tmTheoM: {
+    width: "79.73%",
+    left: "16.53%",
+    color: Color.colorGainsboro_200,
+    textAlign: "left",
+    top: "17.54%",
+    height: "64.91%",
+    position: "absolute",
+    alignItems: "center",
+    display: "flex",
+    fontFamily: FontFamily.robotoRegular,
+  },
+  vectorIcon4: {
+    height: "26.49%",
+    top: "36.84%",
+    right: "88.53%",
+    bottom: "36.67%",
+    left: "7.47%",
+    width: "4%",
+  },
+  searchBar: {
+    top: 73,
+    height: 57,
+  },
+  lchKhm1: {
+    width: "30.93%",
+    left: "34.67%",
+    fontSize: FontSize.size_base,
+    fontWeight: "600",
+    color: Color.greyscaleBlackWhite,
+    fontFamily: FontFamily.robotoBold,
+    alignItems: "center",
+    display: "flex",
+    letterSpacing: 0,
+    justifyContent: "center",
+    top: "0%",
+    height: "100%",
+    position: "absolute",
+  },
+  vectorIcon5: {
+    height: "50%",
+    top: "23.33%",
+    right: "5.87%",
+    left: "90.13%",
+    width: "4%",
+  },
+  vectorIcon6: {
+    height: "46.67%",
+    width: "2.13%",
+    top: "26.67%",
+    right: "94.4%",
+    left: "3.47%",
+  },
+  searchBar1: {
+    top: 44,
+    height: 30,
+  },
+  time: {
+    marginTop: -9,
+    fontFamily: FontFamily.robotoBold,
+    color: Color.colorWhitesmoke_100,
+    width: 54,
+    fontSize: FontSize.size_mini,
+    letterSpacing: 0,
+    textAlign: "center",
+    top: "50%",
+    left: 0,
+  },
+  action: {
+    height: "40.91%",
+    width: "14.32%",
+    top: "31.82%",
+    right: "80.37%",
+    bottom: "27.27%",
+    left: "5.31%",
+    overflow: "hidden",
+    position: "absolute",
+  },
+  batteryIcon: {
+    marginTop: -5.8,
+    right: 1,
+    width: 25,
+    height: 12,
+  },
+  combinedShapeIcon: {
+    width: 17,
+    height: 11,
+  },
+  wiFiIcon: {
+    width: 15,
+    height: 11,
+  },
+  container: {
+    marginTop: -6,
+    right: 14,
+    width: 68,
+    height: 14,
+    overflow: "hidden",
+  },
+  topBarStatus1: {
+    top: "0%",
+    bottom: "0%",
+    right: "0%",
+    height: "100%",
+    position: "absolute",
+  },
+  topBarStatus: {
+    top: 0,
+    height: 44,
+  },
+  instanceChild: {
+    borderRadius: Border.br_3xs,
+  },
+  groupChild: {
+    backgroundColor: Color.colorLimegreen_300,
+  },
+  groupItem: {
+    height: "33.33%",
+    width: "8.99%",
+    right: "84.27%",
+    bottom: "33.33%",
+    left: "6.74%",
+    top: "33.33%",
+    maxHeight: "100%",
+    overflow: "hidden",
+    maxWidth: "100%",
+    position: "absolute",
+  },
+  tLch: {
+    color: Color.colorForestgreen,
+    height: "37.5%",
+    left: "19.1%",
+    width: "70.79%",
+    top: "33.33%",
+  },
+  rectangleGroup: {
+    height: "12.24%",
+    width: "25.65%",
+    top: "7.65%",
+    right: "69.74%",
+    bottom: "80.1%",
+    left: "4.61%",
+    position: "absolute",
+  },
+  stt1: {
+    width: "12.1%",
+    top: "10.71%",
+    left: "84.15%",
+    justifyContent: "center",
+    textAlign: "center",
+    fontFamily: FontFamily.robotoRegular,
+  },
+  bnhVinTh: {
+    top: "32.14%",
+    fontWeight: "700",
+    width: "51.01%",
+    left: "4.61%",
+    fontFamily: FontFamily.robotoBold,
+    textAlign: "left",
+  },
+  giKhmD: {
+    top: "55.61%",
+    height: "6.63%",
+    fontSize: FontSize.size_mini,
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    letterSpacing: 0,
+    position: "absolute",
+    fontFamily: FontFamily.robotoRegular,
+  },
+  text: {
+    top: "56.12%",
+    textAlign: "right",
+  },
+  text1: {
+    top: "69.9%",
+    textAlign: "right",
+  },
+  dngL: {
+    left: "44.09%",
+    textAlign: "right",
+    width: "51.01%",
+  },
+  khnhHng: {
+    width: "39.48%",
+    left: "4.61%",
+    textAlign: "left",
+  },
+  giKhm: {
+    top: "69.39%",
+    height: "6.63%",
+    fontSize: FontSize.size_mini,
+    alignItems: "center",
+    display: "flex",
+    color: Color.colorBlack,
+    letterSpacing: 0,
+    position: "absolute",
+    fontFamily: FontFamily.robotoRegular,
+  },
+  artboard14RemovebgPreview4Icon: {
+    height: "15.82%",
+    width: "13.83%",
+    top: "27.55%",
+    right: "3.75%",
+    bottom: "56.63%",
+    left: "82.42%",
+  },
+  rectangleParent: {
+    top: 7,
+  },
+  groupInner: {
+    backgroundColor: Color.colorBrown_500,
+  },
+  hy: {
+    height: "37.5%",
+    left: "19.1%",
+    width: "70.79%",
+    top: "33.33%",
+    color: Color.foundationBrownBrown500,
+  },
+  rectangleContainer: {
+    top: 210,
+  },
+  rectangleView: {
+    backgroundColor: Color.colorRoyalblue_400,
+  },
+  khm: {
+    height: "41.67%",
+    top: "29.17%",
+    color: Color.colorRoyalblue_100,
+  },
+  rectangleParent1: {
+    top: 413,
+  },
+  instanceParent: {
+    top: 130,
+    height: 613,
+    overflow: "hidden",
+  },
+  calendarlistscreen: {
+    backgroundColor: Color.colorWhitesmoke_100,
+    flex: 1,
+    height: 812,
+    width: "100%",
+  },
+});
 
-// const styles = StyleSheet.create({
-//   searchBarLayout: {
-//     height: 57,
-//     width: 375,
-//     left: 0,
-//     position: "absolute",
-//   },
-//   searchPosition: {
-//     left: "0%",
-//     position: "absolute",
-//   },
-//   groupInnerBg: {
-//     backgroundColor: Color.foundationBrownBrown500,
-//     bottom: "0%",
-//     height: "100%",
-//   },
-//   itemIconLayout: {
-//     maxHeight: "100%",
-//     maxWidth: "100%",
-//     overflow: "hidden",
-//   },
-//   bLcTypo: {
-//     alignItems: "center",
-//     display: "flex",
-//     textAlign: "left",
-//     fontFamily: FontFamily.robotoRegular,
-//     fontSize: FontSize.size_mini,
-//     letterSpacing: 0,
-//     position: "absolute",
-//   },
-//   barPosition: {
-//     width: 375,
-//     left: 0,
-//     position: "absolute",
-//   },
-//   serviceItemShadowBox: {
-//     height: 348,
-//     width: 343,
-//     shadowOpacity: 1,
-//     elevation: 4,
-//     shadowRadius: 4,
-//     shadowOffset: {
-//       width: 0,
-//       height: 4,
-//     },
-//     shadowColor: "rgba(0, 0, 0, 0.25)",
-//     left: 16,
-//     position: "absolute",
-//   },
-//   rectangleParentPosition: {
-//     bottom: "5.55%",
-//     left: "0%",
-//     right: "0%",
-//     position: "absolute",
-//     width: "100%",
-//   },
-//   groupChildPosition: {
-//     backgroundColor: Color.greyscaleBlackWhite,
-//     left: "0%",
-//     bottom: "0%",
-//     right: "0%",
-//     position: "absolute",
-//     width: "100%",
-//   },
-//   groupItemPosition: {
-//     borderRadius: Border.br_3xs,
-//     left: "0%",
-//     right: "0%",
-//     top: "0%",
-//     position: "absolute",
-//     width: "100%",
-//   },
-//   dchVHotTypo: {
-//     textAlign: "justify",
-//     color: Color.colorBlack,
-//     lineHeight: 19,
-//     fontSize: FontSize.size_base,
-//     left: "5.54%",
-//     top: "63.51%",
-//     width: "88.92%",
-//     fontFamily: FontFamily.robotoRegular,
-//     position: "absolute",
-//   },
-//   timeTypo: {
-//     textAlign: "center",
-//     fontSize: FontSize.size_mini,
-//   },
-//   khmVIuTypo: {
-//     top: "20%",
-//     textAlign: "center",
-//     color: Color.greyscaleBlackWhite,
-//     fontFamily: FontFamily.robotoBold,
-//     fontWeight: "600",
-//     lineHeight: 18,
-//     fontSize: FontSize.size_mini,
-//     position: "absolute",
-//   },
-//   timePosition: {
-//     top: "50%",
-//     position: "absolute",
-//   },
-//   filterPosition: {
-//     top: "12.77%",
-//     position: "absolute",
-//   },
-//   childBorder: {
-//     borderWidth: 1,
-//     borderColor: Color.colorGray_200,
-//     borderStyle: "solid",
-//     borderRadius: Border.br_14xl,
-//     left: "0%",
-//     bottom: "0%",
-//     top: "0%",
-//     height: "100%",
-//     position: "absolute",
-//   },
-//   ttCTypo: {
-//     color: Color.colorDarkslategray,
-//     fontSize: FontSize.size_smi,
-//     alignItems: "center",
-//     display: "flex",
-//     textAlign: "left",
-//     fontFamily: FontFamily.robotoRegular,
-//     letterSpacing: 0,
-//     position: "absolute",
-//   },
-//   searchBarChild: {
-//     left: "0%",
-//     position: "absolute",
-//     right: "0%",
-//     width: "100%",
-//     top: "0%",
-//   },
-//   vectorIcon: {
-//     height: "30.18%",
-//     width: "2.67%",
-//     top: "35.79%",
-//     right: "92%",
-//     bottom: "34.04%",
-//     left: "5.33%",
-//     display: "none",
-//     position: "absolute",
-//   },
-//   searchBarItem: {
-//     height: "65.96%",
-//     width: "83.2%",
-//     top: "17.02%",
-//     right: "3.73%",
-//     bottom: "17.02%",
-//     left: "13.07%",
-//     borderRadius: Border.br_24xl,
-//     backgroundColor: Color.colorMaroon_200,
-//     position: "absolute",
-//   },
-//   tnBcS: {
-//     height: "64.91%",
-//     width: "79.73%",
-//     top: "17.54%",
-//     left: "16.53%",
-//     color: Color.colorGainsboro_100,
-//   },
-//   searchBar1: {
-//     bottom: "0%",
-//     left: "0%",
-//     top: "0%",
-//     height: "100%",
-//     right: "0%",
-//     width: "100%",
-//   },
-//   vectorIcon1: {
-//     height: "24.56%",
-//     width: "2.13%",
-//     top: "36.84%",
-//     right: "93.6%",
-//     bottom: "38.6%",
-//     left: "4.27%",
-//     position: "absolute",
-//   },
-//   searchBar: {
-//     top: 0,
-//   },
-//   headerFixed: {
-//     top: 43,
-//   },
-//   groupChild: {
-//     height: "44.6%",
-//     top: "55.4%",
-//     borderBottomLeftRadius: Border.br_3xs,
-//     borderBottomRightRadius: Border.br_3xs,
-//     backgroundColor: Color.greyscaleBlackWhite,
-//   },
-//   groupItem: {
-//     height: "57.04%",
-//     bottom: "42.96%",
-//     maxHeight: "100%",
-//     maxWidth: "100%",
-//     overflow: "hidden",
-//   },
-//   rectangleParent: {
-//     height: "94.45%",
-//     top: "0%",
-//   },
-//   dchVHot: {
-//     height: "16.38%",
-//   },
-//   groupInner: {
-//     backgroundColor: Color.foundationBrownBrown500,
-//     bottom: "0%",
-//     height: "100%",
-//   },
-//   cpCu2424: {
-//     height: "43.33%",
-//     width: "53.19%",
-//     top: "30%",
-//     left: "23.4%",
-//     justifyContent: "center",
-//     color: Color.greyscaleBlackWhite,
-//     fontFamily: FontFamily.robotoBold,
-//     fontWeight: "600",
-//     lineHeight: 18,
-//     textAlign: "center",
-//     alignItems: "center",
-//     display: "flex",
-//     position: "absolute",
-//   },
-//   rectangleGroup: {
-//     height: "8.62%",
-//     width: "54.81%",
-//     top: "49.71%",
-//     right: "45.19%",
-//     bottom: "41.67%",
-//   },
-//   serviceItem: {
-//     top: 0,
-//   },
-//   timPhngVaccine: {
-//     left: "13.83%",
-//   },
-//   serviceItem1: {
-//     top: 348,
-//   },
-//   groupChild2: {
-//     borderBottomLeftRadius: Border.br_3xs,
-//     borderBottomRightRadius: Border.br_3xs,
-//     backgroundColor: Color.greyscaleBlackWhite,
-//     top: "0%",
-//     height: "100%",
-//   },
-//   serviceItemInner: {
-//     height: "42.13%",
-//     top: "52.33%",
-//   },
-//   serviceItemChild: {
-//     height: "53.88%",
-//     bottom: "46.12%",
-//     maxHeight: "100%",
-//     maxWidth: "100%",
-//     overflow: "hidden",
-//   },
-//   khmVIu: {
-//     left: "20.74%",
-//   },
-//   serviceItem2: {
-//     top: 696,
-//   },
-//   dchVContent: {
-//     top: 161,
-//     height: 651,
-//   },
-//   time: {
-//     marginTop: -9,
-//     fontFamily: FontFamily.sFProText,
-//     color: Color.colorWhitesmoke_100,
-//     width: 54,
-//     textAlign: "center",
-//     fontSize: FontSize.size_mini,
-//     letterSpacing: 0,
-//     top: "50%",
-//     left: 0,
-//   },
-//   action: {
-//     height: "40.91%",
-//     width: "14.32%",
-//     top: "31.82%",
-//     right: "80.37%",
-//     bottom: "27.27%",
-//     left: "5.31%",
-//     position: "absolute",
-//     overflow: "hidden",
-//   },
-//   batteryIcon: {
-//     marginTop: -5.8,
-//     right: 1,
-//     width: 25,
-//     height: 12,
-//   },
-//   combinedShapeIcon: {
-//     width: 17,
-//     height: 11,
-//   },
-//   wiFiIcon: {
-//     width: 15,
-//     height: 11,
-//   },
-//   container: {
-//     marginTop: -6,
-//     right: 14,
-//     width: 68,
-//     height: 14,
-//     overflow: "hidden",
-//   },
-//   topBarStatus: {
-//     height: 44,
-//     top: 0,
-//   },
-//   filterBarChild: {
-//     top: "0%",
-//     height: "100%",
-//   },
-//   filter1Child: {
-//     right: "0%",
-//     width: "100%",
-//   },
-//   ttC: {
-//     height: "44.64%",
-//     width: "56.92%",
-//     top: "26.38%",
-//     left: "39.49%",
-//   },
-//   vectorIcon2: {
-//     height: "49.28%",
-//     width: "22.18%",
-//     top: "19.42%",
-//     right: "61.54%",
-//     bottom: "31.3%",
-//     left: "16.28%",
-//     position: "absolute",
-//   },
-//   filter1: {
-//     height: "73.4%",
-//     width: "20.8%",
-//     right: "76.53%",
-//     bottom: "13.83%",
-//     left: "2.67%",
-//   },
-//   filter2Child: {
-//     width: "75.42%",
-//     right: "24.58%",
-//   },
-//   dchV: {
-//     height: "38.24%",
-//     width: "71.19%",
-//     top: "29.41%",
-//     left: "28.81%",
-//   },
-//   vectorIcon3: {
-//     height: "40%",
-//     width: "12.29%",
-//     top: "26.76%",
-//     right: "78.47%",
-//     bottom: "33.24%",
-//     left: "9.24%",
-//     position: "absolute",
-//   },
-//   filter2: {
-//     height: "72.34%",
-//     width: "31.47%",
-//     right: "42.93%",
-//     bottom: "14.89%",
-//     left: "25.6%",
-//   },
-//   vectorIcon4: {
-//     width: "26.47%",
-//     right: "73.53%",
-//     left: "0%",
-//     position: "absolute",
-//     bottom: "0%",
-//     top: "0%",
-//     height: "100%",
-//   },
-//   bLc: {
-//     width: "63.24%",
-//     left: "36.76%",
-//     color: Color.colorDimgray,
-//     top: "0%",
-//     height: "100%",
-//   },
-//   filter3: {
-//     height: "36.17%",
-//     width: "18.13%",
-//     top: "31.91%",
-//     right: "2.4%",
-//     bottom: "31.91%",
-//     left: "79.47%",
-//     position: "absolute",
-//   },
-//   filterBar: {
-//     top: 100,
-//     height: 47,
-//   },
-//   servicelistscreen: {
-//     backgroundColor: Color.colorWhitesmoke_100,
-//     flex: 1,
-//     height: 812,
-//     overflow: "hidden",
-//     width: "100%",
-//   },
-// });
-
-// export default ServiceListScreen;
+export default ServiceListScreen;

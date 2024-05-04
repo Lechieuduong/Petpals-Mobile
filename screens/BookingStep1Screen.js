@@ -12,11 +12,11 @@ import { useNavigation } from "@react-navigation/native";
 
 const BookingStep1Screen = (props) => {
   const onPress = () => {
-    props.navigation.navigate("RegisterScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const onPress1 = () => {
-    props.navigation.navigate("LoginScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const [isActive, setIsActive] = useState(false);

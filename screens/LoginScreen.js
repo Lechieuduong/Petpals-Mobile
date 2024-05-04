@@ -13,7 +13,7 @@ const LoginScreen = (props) => {
     };
 
     const onPress3 = () => {
-        props.navigation.navigate('BookingListScreen');
+        props.navigation.navigate('HomePageScreen');
     };
     
     return (

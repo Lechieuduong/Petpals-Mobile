@@ -15,11 +15,11 @@ const BookingStep3Screen = (props) => {
   const [selected, setSelected] = useState("");
 
   const onPress = () => {
-    props.navigation.navigate("RegisterScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const onPress1 = () => {
-    props.navigation.navigate("LoginScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const onPress2 = () => {

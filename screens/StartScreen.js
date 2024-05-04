@@ -6,13 +6,13 @@ import { FontFamily, Border, Color, FontSize } from "../GlobalStyles";
 const StartScreen = (props) => {
 
   const onPress = () => {
-    props.navigation.navigate('LoginScreen');
+    props.navigation.navigate('HomePageScreen');
   };
 
   return (
     <View style={styles.startscreen}>
       <Text style={[styles.mainTitleSize, styles.mainTitleTypo]}>
-        Đặt lịch khám cho thú cưng của bạn 1
+        Đặt lịch khám cho thú cưng của bạn
       </Text>
       <View style={styles.imageSlider}>
         

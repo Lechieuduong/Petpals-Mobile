@@ -1,202 +1,155 @@
 import * as React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { FontFamily, Color, FontSize, Border } from "../GlobalStyles";
-
-const BookingListScreen = () => {
+const BookingListScreen = (props) => {
+  const onPress = () => {
+    props.navigation.navigate('HomePageScreen');
+  };
+  const onPress2 = () => {
+    props.navigation.navigate('ChatScreen');
+  };
+  const onPress3 = () => {
+    props.navigation.navigate('BookingDetailScreen');
+  };
+  const onPress6 = () => {
+    props.navigation.navigate('BookingDetail1Screen');
+  };
+  const onPress4 = () => {
+    props.navigation.navigate('BookingListScreen');
+  };
+  const onPress5 = () => {
+    props.navigation.navigate('ProfileScreen');
+  };
+  const onPress7 = () => {
+    props.navigation.navigate('BookingDetail2Screen');
+  };
   return (
     <View style={styles.calendarlistscreen}>
-      <View style={[styles.footer, styles.footerPosition]}>
-        <View style={styles.childPosition} />
-        {/* <Image
-          style={[styles.vectorIcon, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector48.png")}
-        /> */}
-        <Text style={[styles.trangCh, styles.stt1FlexBox]}>Trang chủ</Text>
-        <Text style={styles.lchKhm}>Lịch khám</Text>
-        <Text style={[styles.tinNhn, styles.tinNhnTypo]}>Tin nhắn</Text>
-        <Text style={[styles.tiKhon, styles.tinNhnTypo]}>Tài khoản</Text>
-        {/* <Image
-          style={[styles.vectorIcon1, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector49.png")}
-        /> */}
-        {/* <Image
-          style={[styles.vectorIcon2, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector13.png")}
-        /> */}
-        {/* <Image
-          style={[styles.vectorIcon3, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector14.png")}
-        /> */}
-        <View style={[styles.footerItem, styles.footerItemPosition]} />
-      </View>
-      <View style={[styles.searchBar, styles.searchPosition]}>
-        <View style={[styles.searchBarChild, styles.footerItemPosition]} />
-        <View style={[styles.searchBarItem, styles.tmTheoMPosition]} />
-        <Text style={[styles.tmTheoM, styles.timeTypo]}>
-          Tìm theo mã phiếu khám, tên khách hàng,...
-        </Text>
-        {/* <Image
-          style={[styles.vectorIcon4, styles.vectorIconLayout]}
-          contentFit="cover"
-          source={require("../assets/vector50.png")}
-        /> */}
-      </View>
-      <View style={[styles.searchBar1, styles.searchPosition]}>
-        <View style={[styles.searchBarChild, styles.footerItemPosition]} />
-        <Text style={[styles.lchKhm1, styles.stt1FlexBox]}>Lịch khám</Text>
-        {/* <Image
-          style={[styles.vectorIcon5, styles.vectorIconPosition]}
+      <View style={styles.header}>
+        <Text style={{ color: "white" , textAlign: "center", top: 50, fontSize:  15, fontFamily: FontFamily.robotoBold}}>Lịch khám</Text>
+        <Image
+          style={{ height: 15, width: 15, top: 30, alignSelf: "flex-end", right: 20 }}
           contentFit="cover"
           source={require("../assets/vector51.png")}
         />
+        <TouchableOpacity onPress={onPress}>
+            <Image
+            style={{ height: 14, width: 8, top: 17, alignSelf: "flex-start", left: 20 }}
+            contentFit="cover"
+            source={require("../assets/vector19.png")}
+            />
+        </TouchableOpacity>
+        <TextInput style={{ height: 40, width: 300, alignSelf: "center", backgroundColor: "#54090B", top: 30, borderRadius: 20, textAlign: "center", color: "white"}} placeholder="  Tìm theo mã phiếu khám, tên khách hàng,..." placeholderTextColor={"white"}></TextInput>
         <Image
-          style={[styles.vectorIcon6, styles.vectorIconPosition]}
-          contentFit="cover"
-          source={require("../assets/vector19.png")}
-        /> */}
+            style={{ height: 15, width: 15, top: 2 , left: 40}}
+            contentFit="cover"
+            source={require("../assets/vector50.png")}
+        />
       </View>
-      <View style={[styles.topBarStatus, styles.searchPosition]}>
-        <View style={[styles.topBarStatus1, styles.barPosition]}>
-          <View style={[styles.searchBarChild, styles.footerItemPosition]}>
-            <View style={styles.action}>
-              <Text style={[styles.time, styles.timePosition]}>9:41</Text>
-            </View>
-            <View style={[styles.container, styles.timePosition]}>
-              {/* <Image
-                style={[styles.batteryIcon, styles.timePosition]}
-                contentFit="cover"
-                source={require("../assets/battery1.png")}
-              />
-              <Image
-                style={styles.combinedShapeIcon}
-                contentFit="cover"
-                source={require("../assets/combined-shape1.png")}
-              />
-              <Image
-                style={styles.wiFiIcon}
-                contentFit="cover"
-                source={require("../assets/wifi1.png")}
-              /> */}
-            </View>
-          </View>
-        </View>
+      <View style={{ height: 600, width: "100%" }}>
+        <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+          <TouchableOpacity onPress={onPress3} style={{ height: 200, backgroundColor: "white", width: 330, alignSelf: "center", top: 10, borderRadius: 15 }}>
+              <View style={{ top: 20, left: 20 , backgroundColor: '#BBFDC6', borderRadius: 10, height: 20, width: 80 }}>
+                <Text style={{ color: "#4CD964", textAlign: "center", left: 4, fontSize: 12, top: 2 }}>Đã đặt lịch</Text>
+              </View>
+              <View style={{ top: 6, left: 25 , backgroundColor: '#4CD964', borderRadius: 10, height: 8, width: 8, }}/>
+              <Text style={{ top: -8, textAlign: 'right', right: 20, fontSize: 15, fontFamily: FontFamily.robotoBold }}>STT 1</Text>
+              <Text style={{ top: 10, textAlign: 'left', left: 20, fontSize: 17, fontFamily: FontFamily.robotoBold }}>Bệnh viện thú y Petpals</Text>
+              <Text style={{ top: 35, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám dự kiến</Text>
+              <Text style={{ top: 16, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 28/04/2024</Text>
+              <Text style={{ top: 25, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám</Text>
+              <Text style={{ top: 6, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 12:00 - 28/04/2024</Text>
+              <Text style={{ top: 15, textAlign: 'left', left: 20, fontSize: 15 }}>Khánh hàng</Text>
+              <Text style={{ top: -4, textAlign: 'right', right: 20, fontSize: 15 }}>Dương Lê</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onPress6} style={{ height: 200, backgroundColor: "white", width: 330, alignSelf: "center", top: 20, borderRadius: 15 }}>
+              <View style={{ top: 20, left: 20 , backgroundColor: '#F9BCBE', borderRadius: 10, height: 20, width: 80 }}>
+                <Text style={{ color: "#911A1D", textAlign: "center", left: 4, fontSize: 12, top: 2 }}>Đã hủy</Text>
+              </View>
+              <View style={{ top: 6, left: 25 , backgroundColor: '#911A1D', borderRadius: 10, height: 8, width: 8, }}/>
+              <Text style={{ top: -8, textAlign: 'right', right: 20, fontSize: 15, fontFamily: FontFamily.robotoBold }}>STT 2</Text>
+              <Text style={{ top: 10, textAlign: 'left', left: 20, fontSize: 17, fontFamily: FontFamily.robotoBold }}>Bệnh viện thú y Petpals</Text>
+              <Text style={{ top: 35, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám dự kiến</Text>
+              <Text style={{ top: 16, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 28/04/2024</Text>
+              <Text style={{ top: 25, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám</Text>
+              <Text style={{ top: 6, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 12:00 - 28/04/2024</Text>
+              <Text style={{ top: 15, textAlign: 'left', left: 20, fontSize: 15 }}>Khánh hàng</Text>
+              <Text style={{ top: -4, textAlign: 'right', right: 20, fontSize: 15 }}>Dương Lê</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onPress7} style={{ height: 200, backgroundColor: "white", width: 330, alignSelf: "center", top: 30, borderRadius: 15, bottom: 30}}>
+              <View style={{ top: 20, left: 20 , backgroundColor: '#AFCCFC', borderRadius: 10, height: 20, width: 80 }}>
+                <Text style={{ color: "#4080FD", textAlign: "center", left: 4, fontSize: 12, top: 2 }}>Đã khám</Text>
+              </View>
+              <View style={{ top: 6, left: 25 , backgroundColor: '#4080FD', borderRadius: 10, height: 8, width: 8, }}/>
+              <Text style={{ top: -8, textAlign: 'right', right: 20, fontSize: 15, fontFamily: FontFamily.robotoBold }}>STT 3</Text>
+              <Text style={{ top: 10, textAlign: 'left', left: 20, fontSize: 17, fontFamily: FontFamily.robotoBold }}>Bệnh viện thú y Petpals</Text>
+              <Text style={{ top: 35, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám dự kiến</Text>
+              <Text style={{ top: 16, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 28/04/2024</Text>
+              <Text style={{ top: 25, textAlign: 'left', left: 20, fontSize: 15 }}>Giờ khám</Text>
+              <Text style={{ top: 6, textAlign: 'right', right: 20, fontSize: 15 }}>09:00 - 12:00 - 28/04/2024</Text>
+              <Text style={{ top: 15, textAlign: 'left', left: 20, fontSize: 15 }}>Khánh hàng</Text>
+              <Text style={{ top: -4, textAlign: 'right', right: 20, fontSize: 15 }}>Dương Lê</Text>
+          </TouchableOpacity>
+        </ScrollView>
       </View>
-      <View style={[styles.instanceParent, styles.footerPosition]}>
-        <View style={[styles.rectangleParent, styles.rectangleParentLayout]}>
-          <View style={[styles.instanceChild, styles.childPosition]} />
-          <View style={styles.rectangleGroup}>
-            <View style={[styles.groupChild, styles.groupPosition]} />
-            {/* <Image
-              style={styles.groupItem}
-              contentFit="cover"
-              source={require("../assets/ellipse-161.png")}
-            /> */}
-            <Text style={[styles.tLch, styles.hyTypo]}>Đã đặt lịch</Text>
-          </View>
-          <Text style={[styles.stt1, styles.khmLayout1]}>STT 1</Text>
-          <Text style={[styles.bnhVinTh, styles.khmLayout1]}>
-            Bệnh viện thú y Petpals
-          </Text>
-          <Text style={[styles.giKhmD, styles.khmLayout]}>
-            Giờ khám dự kiến
-          </Text>
-          <Text style={[styles.text, styles.textTypo]}>09:00 - 28/04/2024</Text>
-          <Text style={[styles.text1, styles.textTypo]}>
-            09:00 - 12:00 - 28/04/2024
-          </Text>
-          <Text style={[styles.dngL, styles.dngLPosition]}>Dương Lê</Text>
-          <Text style={[styles.khnhHng, styles.dngLPosition]}>Khánh hàng</Text>
-          <Text style={[styles.giKhm, styles.khmLayout]}>Giờ khám</Text>
-          {/* <Image
-            style={[
-              styles.artboard14RemovebgPreview4Icon,
-              styles.vectorIconLayout,
-            ]}
-            contentFit="cover"
-            source={require("../assets/artboard-14removebgpreview-4.png")}
-          /> */}
-        </View>
-        <View style={[styles.rectangleContainer, styles.rectangleParentLayout]}>
-          <View style={[styles.instanceChild, styles.childPosition]} />
-          <Text style={[styles.stt1, styles.khmLayout1]}>STT 1</Text>
-          <Text style={[styles.bnhVinTh, styles.khmLayout1]}>
-            Bệnh viện thú y Petpals
-          </Text>
-          <Text style={[styles.giKhmD, styles.khmLayout]}>
-            Giờ khám dự kiến
-          </Text>
-          <Text style={[styles.text, styles.textTypo]}>09:00 - 28/04/2024</Text>
-          <Text style={[styles.text1, styles.textTypo]}>
-            09:00 - 12:00 - 28/04/2024
-          </Text>
-          <Text style={[styles.dngL, styles.dngLPosition]}>Dương Lê</Text>
-          <Text style={[styles.khnhHng, styles.dngLPosition]}>Khánh hàng</Text>
-          <Text style={[styles.giKhm, styles.khmLayout]}>Giờ khám</Text>
-          {/* <Image
-            style={[
-              styles.artboard14RemovebgPreview4Icon,
-              styles.vectorIconLayout,
-            ]}
-            contentFit="cover"
-            source={require("../assets/artboard-14removebgpreview-4.png")}
-          /> */}
-          <View style={styles.rectangleGroup}>
-            <View style={[styles.groupInner, styles.groupPosition]} />
-            {/* <Image
-              style={styles.groupItem}
-              contentFit="cover"
-              source={require("../assets/ellipse-1611.png")}
-            /> */}
-            <Text style={[styles.hy, styles.hyTypo]}>Đã hủy</Text>
-          </View>
-        </View>
-        <View style={[styles.rectangleParent1, styles.rectangleParentLayout]}>
-          <View style={[styles.instanceChild, styles.childPosition]} />
-          <View style={styles.rectangleGroup}>
-            <View style={[styles.rectangleView, styles.groupPosition]} />
-            {/* <Image
-              style={styles.groupItem}
-              contentFit="cover"
-              source={require("../assets/ellipse-1612.png")}
-            /> */}
-            <Text style={[styles.khm, styles.hyTypo]}>Đã khám</Text>
-          </View>
-          <Text style={[styles.stt1, styles.khmLayout1]}>STT 1</Text>
-          <Text style={[styles.bnhVinTh, styles.khmLayout1]}>
-            Bệnh viện thú y Petpals
-          </Text>
-          <Text style={[styles.giKhmD, styles.khmLayout]}>
-            Giờ khám dự kiến
-          </Text>
-          <Text style={[styles.text, styles.textTypo]}>09:00 - 28/04/2024</Text>
-          <Text style={[styles.text1, styles.textTypo]}>
-            09:00 - 12:00 - 28/04/2024
-          </Text>
-          <Text style={[styles.dngL, styles.dngLPosition]}>Dương Lê</Text>
-          <Text style={[styles.khnhHng, styles.dngLPosition]}>Khánh hàng</Text>
-          <Text style={[styles.giKhm, styles.khmLayout]}>Giờ khám</Text>
-          {/* <Image
-            style={[
-              styles.artboard14RemovebgPreview4Icon,
-              styles.vectorIconLayout,
-            ]}
-            contentFit="cover"
-            source={require("../assets/artboard-14removebgpreview-4.png")}
-          /> */}
-        </View>
+      <View style={{ width: "100%", top: 700, height: 80, backgroundColor: "white", position: "absolute"}}>
+                  <TouchableOpacity onPress={onPress}>
+                  <View style={{width: "25%", left: 10, top: 10}}>
+                        <Image
+                            style={{ width: 20, height: 20, alignSelf: "center"}}
+                            contentFit="contain"
+                            source={require("../assets/vector48.png")}
+                        />
+                        <Text style={{textAlign: "center" }}>Trang chủ</Text>
+                  </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={onPress4}>
+                  <View style={{width: "25%", top: -27, left: 95}}>
+                        <Image
+                            style={{ width: 20, height: 20, alignSelf: "center"}}
+                            contentFit="contain"
+                            source={require("../assets/vector49.png")}
+                        />
+                        <Text style={{color: Color.colorBrown,  textAlign: "center" }}>Lịch khám</Text>
+                  </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={onPress2}>
+                  <View style={{width: "25%", top: -64, left: 180}}>
+                        <Image
+                            style={{ width: 20, height: 20, alignSelf: "center"}}
+                            contentFit="contain"
+                            source={require("../assets/vector13.png")}
+                        />
+                        <Text style={{ textAlign: "center" }}>Tin nhắn</Text>
+                  </View>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={onPress5}>
+                  <View style={{width: "25%", top: -101, left: 260 }}>
+                        <Image
+                            style={{ width: 20, height: 20, alignSelf: "center"}}
+                            contentFit="contain"
+                            source={require("../assets/vector14.png")}
+                        />
+                        <Text style={{ textAlign: "center" }}>Tài khoản</Text>
+                  </View>
+                  </TouchableOpacity>
+                  
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: Color.colorBrown,
+    height: 130,
+    width: "100%"
+  },
   footerPosition: {
     width: 374,
+    top: 690,
+    height: 69,
     left: 0,
     position: "absolute",
   },
@@ -420,7 +373,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: Border.br_8xs,
   },
   footer: {
-    top: 743,
+    top: 690,
     height: 69,
   },
   searchBarChild: {

@@ -16,11 +16,11 @@ const BookingStep4Screen = (props) => {
 
 
   const onPress = () => {
-    props.navigation.navigate("RegisterScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const onPress1 = () => {
-    props.navigation.navigate("LoginScreen");
+    props.navigation.navigate("HomePageScreen");
   };
 
   const onPress2 = () => {
@@ -29,6 +29,14 @@ const BookingStep4Screen = (props) => {
 
   const onPress3 = () => {
     props.navigation.navigate("BookingStep2Screen");
+  };
+
+  const onPress5 = () => {
+    props.navigation.navigate("BookingStep3Screen");
+  };
+
+  const onPress4 = () => {
+    props.navigation.navigate("BookingStep5Screen");
   };
 
   const handlePress = () => {
@@ -60,8 +68,9 @@ const BookingStep4Screen = (props) => {
             contentFit="cover"
             source={require("../assets/vector55.png")}
           />
-
-          <View style={styles.contentContainer}>
+        </View>
+        
+        <View style={{ width: 400, height: 40, top: 75, left: -10 }}>
             <ScrollView horizontal>
               <TouchableOpacity onPress={onPress2} style={{ width: 60 }}>
                 <View style={styles.circle}>
@@ -71,10 +80,11 @@ const BookingStep4Screen = (props) => {
               </TouchableOpacity>
 
               <Image
-                style={styles.vectorIcon2}
+                style={{top: 12, height: 17, width: 9, left: 30}}
                 contentFit="cover"
                 source={require("../assets/vector56.png")}
               />
+
               <TouchableOpacity onPress={onPress3} style={{ width: 100 }}>
                 <View style={styles.circle2}>
                   <Text style={styles.number}>2</Text>
@@ -83,12 +93,12 @@ const BookingStep4Screen = (props) => {
               </TouchableOpacity>
 
               <Image
-                style={styles.vectorIcon3}
+                style={{top: 12, height: 17, width: 9, left: 40}}
                 contentFit="cover"
                 source={require("../assets/vector56.png")}
               />
 
-              <TouchableOpacity style={{ width: 100 }}>
+              <TouchableOpacity onPress={onPress5} style={{ width: 100 }}>
                 <View style={styles.circle3}>
                   <Text style={styles.number}>3</Text>
                 </View>
@@ -96,17 +106,20 @@ const BookingStep4Screen = (props) => {
               </TouchableOpacity>
 
               <Image
-                style={styles.vectorIcon3}
+                style={{top: 12, height: 17, width: 9, left: 40}}
                 contentFit="cover"
                 source={require("../assets/vector56.png")}
               />
-              <View style={styles.circle4}>
-                <Text style={styles.number}>4</Text>
+              <View style={{ width: 150 }}>
+                <View style={styles.circle4}>
+                  <Text style={styles.number}>4</Text>
+                </View>
+                <Text style={styles.label4}>Hồ sơ</Text>
               </View>
-              <Text style={styles.label4}>Hồ sơ</Text>
+              
             </ScrollView>
           </View>
-
+          
           <View style={styles.createNew}>
             <Text style={styles.createNewText}>
               Chọn một hồ sơ trong danh sách hoặc tạo mới hồ sơ khách hàng
@@ -157,9 +170,16 @@ const BookingStep4Screen = (props) => {
               </View>
             )}
           </TouchableOpacity>
-        </View>
+            <View style={{ top: 400, height: 100 , backgroundColor: "white" }}>
+                <Text style={{ width: 170, top: 35, left: 15}}>Để nhập thông tin của thú cưng hãy nhấn nút “Tiếp tục”</Text>
+                <TouchableOpacity onPress={onPress4} style={{width: 120, backgroundColor: Color.colorBrown, height: 50, alignSelf: "flex-end", right: 20, top: -5, borderRadius: 10}}>
+                  <Text style={{ color: "white", textAlign: "center", top: 15 }}> Tiếp tục</Text>
+                </TouchableOpacity>
+            </View>
       </View>
     </ScrollView>
+
+
   );
 };
 
@@ -242,6 +262,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: "100%",
     flexDirection: "row",
+    top: 72
   },
   createNewText: {
     left: 20,
@@ -444,8 +465,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   circle3: {
-    top: 8,
-    left: 60,
+    top: 9,
+    left: 50,
     width: 24,
     height: 24,
     borderRadius: 12,
@@ -455,8 +476,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   circle4: {
-    top: 10,
-    left: 80,
+    top: 9,
+    left: 50,
     width: 24,
     height: 24,
     borderRadius: 12,
@@ -494,15 +515,15 @@ const styles = StyleSheet.create({
     color: "black",
   },
   label3: {
-    top: -10,
+    top: -12,
     width: 80,
-    left: 90,
+    left: 80,
     color: "black",
   },
   label4: {
-    top: 1,
+    top: -12,
     width: 80,
-    left: 100,
+    left: 80,
     color: "black",
   },
   selectText2: {
@@ -512,7 +533,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   button: {
-    top: 10,
+    top: 80,
     width: 330,
     height: 165,
     left: 15,

@@ -13,7 +13,17 @@ import BookingStep2Screen from "./screens/BookingStep2Screen";
 import BookingStep3Screen from "./screens/BookingStep3Screen";
 import BookingStep4Screen from "./screens/BookingStep4Screen";
 import BookingListScreen from "./screens/BookingListScreen";
-
+import BookingStep5Screen from "./screens/BookingStep5Screen";
+import HomePageScreen from "./screens/HomepageScreen";
+import ServiceListScreen from "./screens/ServiceListScreen";
+import DoctorListScreen from "./screens/DoctorListScreen";
+import BookingStep6Screen from "./screens/BookingStep6Screen";
+import BookingConfirmScreen from "./screens/BookingConfirmScreen";
+import ChatScreen from "./screens/ChatScreen";
+import BookingDetailScreen from "./screens/BookingDetailScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import BookingDetail1Screen from "./screens/BookingDetailScreen1";
+import BookingDetail2Screen from "./screens/BookingDetailScreen2";
 const App = () => {
   const [hideSplashScreen, setHideSplashScreen] = React.useState(true);
 
@@ -72,15 +82,65 @@ const App = () => {
               options={{ headerShown: false }}
             />
             <Stack.Screen
+              name="BookingStep5Screen"
+              component={BookingStep5Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="BookingListScreen"
               component={BookingListScreen}
               options={{ headerShown: false }}
             />
-            {/* <Stack.Screen
-              name="HomepageScreen"
+            <Stack.Screen
+              name="HomePageScreen"
               component={HomePageScreen}
               options={{ headerShown: false }}
-            /> */}
+            />
+            <Stack.Screen
+              name="ServiceListScreen"
+              component={ServiceListScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="DoctorListScreen"
+              component={DoctorListScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingStep6Screen"
+              component={BookingStep6Screen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingConfirmScreen"
+              component={BookingConfirmScreen}
+              options={{ headerShown: false }}
+            />
+             <Stack.Screen
+              name="ChatScreen"
+              component={ChatScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingDetailScreen"
+              component={BookingDetailScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="ProfileScreen"
+              component={ProfileScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="BookingDetail1Screen"
+              component={BookingDetail1Screen}
+              options={{ headerShown: false }}
+            />
+             <Stack.Screen
+              name="BookingDetail2Screen"
+              component={BookingDetail2Screen}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
         ) : null}
       </NavigationContainer>
